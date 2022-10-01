@@ -31,7 +31,6 @@ JSON_STRING=$( jq -n -c \
 		'{name: $name, label: $gh_label}')
 
 echo -n "JSON_STRING: '${JSON_STRING}'"
-exit 0
 
 curl \
 		-X PATCH \
