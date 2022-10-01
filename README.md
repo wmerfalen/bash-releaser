@@ -70,9 +70,10 @@ Sometimes you might want to pass in arguments to a script without actually calli
 MIT
 
 # Version
-`v1.0.0`
+v1.0.1
 
 # Upcoming features
+
 
 # How versioning works
 x - major release

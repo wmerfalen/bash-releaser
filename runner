@@ -1,6 +1,12 @@
 #!/bin/bash
 
-function help(){
+VERSION=$(cat ./VERSION)
+
+function version(){
+	echo 'bash-releaser version: ' $VERSION
+}
+
+function display-help(){
 	echo 'Usage: ./runner <SCRIPT> <param-1>...[param-N]'
 	echo 
 	echo 'List of scripts:'
@@ -29,12 +35,13 @@ function help(){
 	echo '-- end of help page --'
 }
 if [[ $# -lt 2 ]]; then
-	help
+	display-help
 	exit 1
 fi
 
 if [[ "$1" == "-h" || "$1" == "--help" || "$1" == "--usage" || "$1" == "help" ]]; then
-	help
+	display-help
+	version
 	exit 1
 fi
 
@@ -85,5 +92,6 @@ if [[ "$1" == "delete-release-asset" ]]; then
 fi
 
 echo 'Uh-oh, we didnt run any scripts. Perhaps you should take a look at the help screen'
-help
+display-help
+version
 exit 1
