@@ -10,6 +10,6 @@ LINES=$(wc -l readme_tmp | awk '{print $1}')
 LINES=$(( $LINES - 3 ))
 cat readme_tmp | tail -n $LINES >> readme_a
 
-cat readme_a
+cat readme_a > README.md
 rm readme_tmp
 rm readme_a
