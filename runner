@@ -20,7 +20,10 @@ function help(){
 	echo 'upload-targz-release-asset <USER> <REPO> <RELEASE_ID> <PATH_TO_FILE> <NAME_OF_ASSET>'
 	echo '  - Uploads a .tar.gz file at PATH_TO_FILE and adds that to the release specified by RELEASE_ID'
 	echo
+	echo 'update-release-asset <USER> <REPO> <ASSET_ID> <NAME_OF_ASSET> <LABEL_OF_ASSET>'
+	echo '  - Updates the name and label of the asset specified by ASSET_ID. '
 	echo
+	echo '-- end of help page --'
 }
 if [[ $# -lt 2 ]]; then
 	help
@@ -65,6 +68,13 @@ if [[ "$1" == "upload-targz-release-asset" ]]; then
 	./bin/upload-targz-release-asset.sh $2 $3 $4 $5 $6
 	exit $?
 fi
+
+if [[ "$1" == "update-release-asset" ]]; then
+	echo 'Calling update-release-asset.sh'
+	./bin/update-release-asset.sh $2 $3 $4 $5 $6
+	exit $?
+fi
+
 
 echo 'Uh-oh, we didnt run any scripts. Perhaps you should take a look at the help screen'
 help
