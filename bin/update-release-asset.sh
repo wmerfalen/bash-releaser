@@ -32,6 +32,12 @@ JSON_STRING=$( jq -n -c \
 
 echo -n "JSON_STRING: '${JSON_STRING}'"
 
+if [[ ! -z "${GITHUB_DONT_SEND}" ]]; then
+	echo '... GITHUB_DONT_SEND is set, so we will be exiting before the curl command happens'
+	exit 0
+fi
+
+
 curl \
 		-X PATCH \
 	  -H "Accept: application/vnd.github+json" \

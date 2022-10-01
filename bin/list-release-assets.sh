@@ -13,6 +13,12 @@ echo "GITHUB_USER: '${GITHUB_USER}'"
 echo "GITHUB_REPO: '${GITHUB_REPO}'"
 echo "GITHUB_RELEASE_ID: '${GITHUB_RELEASE_ID}'"
 
+if [[ ! -z "${GITHUB_DONT_SEND}" ]]; then
+	echo '... GITHUB_DONT_SEND is set, so we will be exiting before the curl command happens'
+	exit 0
+fi
+
+
 curl \
 	  -H "Accept: application/vnd.github+json" \
 	  -H "Authorization: Bearer ${GITHUB_ACCESS_TOKEN}" \

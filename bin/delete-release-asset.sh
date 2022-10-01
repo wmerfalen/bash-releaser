@@ -15,6 +15,12 @@ echo "GITHUB_ASSET_ID: '${GITHUB_ASSET_ID}'"
 echo "GITHUB_USER: '${GITHUB_USER}'"
 echo "GITHUB_REPO: '${GITHUB_REPO}'"
 
+if [[ ! -z "${GITHUB_DONT_SEND}" ]]; then
+	echo '... GITHUB_DONT_SEND is set, so we will be exiting before the curl command happens'
+	exit 0
+fi
+
+
 curl \
 		-X DELETE \
 	  -H "Accept: application/vnd.github+json" \

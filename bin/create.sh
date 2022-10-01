@@ -24,6 +24,11 @@ JSON_STRING=$( jq -n -c \
 	'{tag_name: $github_tag_name, name: $github_name, body: "body", draft: false, prerelease: false,generate_release_notes: false}' )
 
 echo "JSON_STRING: '$JSON_STRING'"
+if [[ ! -z "${GITHUB_DONT_SEND}" ]]; then
+	echo '... GITHUB_DONT_SEND is set, so we will be exiting before the curl command happens'
+	exit 0
+fi
+
 
 curl \
 		-X POST \

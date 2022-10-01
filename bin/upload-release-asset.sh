@@ -9,13 +9,22 @@ GITHUB_USER="$1"
 GITHUB_REPO="$2"
 GITHUB_RELEASE_ID="$3"
 GITHUB_PATH_TO_ASSET="$4"
-GITHUB_NAME_OF_ASSET="$5"
+shift
+shift
+shift
+shift
+GITHUB_NAME_OF_ASSET="$*"
 
 echo "GITHUB_RELEASE_ID: '${GITHUB_RELEASE_ID}'"
 echo "GITHUB_USER: '${GITHUB_USER}'"
 echo "GITHUB_REPO: '${GITHUB_REPO}'"
 echo "GITHUB_PATH_TO_ASSET: '${GITHUB_PATH_TO_ASSET}'"
 echo "GITHUB_NAME_OF_ASSET: '${GITHUB_NAME_OF_ASSET}'"
+
+if [[ ! -z "${GITHUB_DONT_SEND}" ]]; then
+	echo '... GITHUB_DONT_SEND is set, so we will be exiting before the curl command happens'
+	exit 0
+fi
 
 curl \
 		-X POST \

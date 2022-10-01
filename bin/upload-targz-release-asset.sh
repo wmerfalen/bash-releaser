@@ -17,6 +17,12 @@ echo "GITHUB_REPO: '${GITHUB_REPO}'"
 echo "GITHUB_PATH_TO_ASSET: '${GITHUB_PATH_TO_ASSET}'"
 echo "GITHUB_NAME_OF_ASSET: '${GITHUB_NAME_OF_ASSET}'"
 
+if [[ ! -z "${GITHUB_DONT_SEND}" ]]; then
+	echo '... GITHUB_DONT_SEND is set, so we will be exiting before the curl command happens'
+	exit 0
+fi
+
+
 curl \
 		-X POST \
 	  -H "Accept: application/vnd.github+json" \
