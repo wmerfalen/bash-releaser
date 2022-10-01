@@ -23,6 +23,9 @@ function help(){
 	echo 'update-release-asset <USER> <REPO> <ASSET_ID> <NAME_OF_ASSET> <LABEL_OF_ASSET>'
 	echo '  - Updates the name and label of the asset specified by ASSET_ID. '
 	echo
+	echo 'delete-release-asset <USER> <REPO> <ASSET_ID>'
+	echo '  - Deletes target asset specified by ASSET_ID'
+	echo
 	echo '-- end of help page --'
 }
 if [[ $# -lt 2 ]]; then
@@ -75,6 +78,11 @@ if [[ "$1" == "update-release-asset" ]]; then
 	exit $?
 fi
 
+if [[ "$1" == "delete-release-asset" ]]; then
+	echo 'Calling delete-release-asset.sh'
+	./bin/delete-release-asset.sh $2 $3 $4
+	exit $?
+fi
 
 echo 'Uh-oh, we didnt run any scripts. Perhaps you should take a look at the help screen'
 help
