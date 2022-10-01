@@ -55,6 +55,14 @@ To see the Usage/help screen, run:
 ./runner upload-targz-release-asset wmerfalen bls 12345678 ~/documents/ubuntu-x86-64-focal.tar.gz ubuntu-x86-64-focal.tar.gz
 ```
 
+# Delete release asset by asset ID
+```
+./runner delete-release-asset USER REPO ASSET_ID
+
+# Example
+./runner delete-release-asset wmerfalen bls 12345678
+```
+
 
 # License
 MIT
