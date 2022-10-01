@@ -5,9 +5,9 @@ if [[ $# -lt 3 ]]; then
 	exit 1
 fi
 
-GITHUB_USER="$1"
-GITHUB_REPO="$2"
-GITHUB_RELEASE_ID="$3"
+GITHUB_USER=$(./bin/lib/sanitize-github-username.sh "$1")
+GITHUB_REPO=$(./bin/lib/sanitize-github-reponame.sh "$2")
+GITHUB_RELEASE_ID=$(./bin/lib/intval.sh "$3")
 
 echo "GITHUB_USER: '${GITHUB_USER}'"
 echo "GITHUB_REPO: '${GITHUB_REPO}'"

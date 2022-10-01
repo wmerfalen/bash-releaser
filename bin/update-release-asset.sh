@@ -6,9 +6,9 @@ if [[ $# -lt 5 ]]; then
 fi
 
 
-GITHUB_USER="$1"
-GITHUB_REPO="$2"
-GITHUB_ASSET_ID="$3"
+GITHUB_USER=$(./bin/lib/sanitize-github-username.sh "$1")
+GITHUB_REPO=$(./bin/lib/sanitize-github-reponame.sh "$2")
+GITHUB_ASSET_ID=$(./bin/lib/intval.sh "$3")
 GITHUB_ASSET_NAME="$4"
 shift
 shift

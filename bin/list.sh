@@ -6,8 +6,8 @@ if [[ $# -lt 2 ]]; then
 	exit 1
 fi
 
-GITHUB_USER="$1"
-GITHUB_REPO="$2"
+GITHUB_USER=$(./bin/lib/sanitize-github-username.sh "$1")
+GITHUB_REPO=$(./bin/lib/sanitize-github-reponame.sh "$2")
 
 if [[ ! -z "${GITHUB_DONT_SEND}" ]]; then
 	echo '... GITHUB_DONT_SEND is set, so we will be exiting before the curl command happens'
