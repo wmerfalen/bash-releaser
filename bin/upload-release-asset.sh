@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $# -lt 5 ]]; then
-	echo 'Usage: create.sh USER REPO RELEASE_ID PATH_TO_ASSET NAME_OF_ASSET'
+	echo 'Usage: upload-release-asset.sh USER REPO RELEASE_ID PATH_TO_ASSET NAME_OF_ASSET'
 	exit 1
 fi
 

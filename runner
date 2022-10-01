@@ -14,8 +14,11 @@ function help(){
 	echo 'list-release-assets <USER> <REPO> <RELEASE_ID>'
 	echo '  - gets the list of assets for a specific release'
 	echo 
-	echo 'upload-release-asset <USER> <REPO> <RELEASE_ID> <PATH_TO_FILE>'
-	echo '  - Uploads the file at PATH_TO_FILE and adds that to the release specified by RELEASE_ID'
+	echo 'upload-release-asset <USER> <REPO> <RELEASE_ID> <PATH_TO_FILE> <NAME_OF_ASSET>'
+	echo '  - Uploads a .zip file at PATH_TO_FILE and adds that to the release specified by RELEASE_ID'
+	echo
+	echo 'upload-targz-release-asset <USER> <REPO> <RELEASE_ID> <PATH_TO_FILE> <NAME_OF_ASSET>'
+	echo '  - Uploads a .tar.gz file at PATH_TO_FILE and adds that to the release specified by RELEASE_ID'
 	echo
 	echo
 }
@@ -53,6 +56,16 @@ fi
 
 if [[ "$1" == "upload-release-asset" ]]; then
 	echo 'Calling upload-release-asset.sh'
-	./bin/upload-release-asset.sh $2 $3 $4 $5
+	./bin/upload-release-asset.sh $2 $3 $4 $5 $6
 	exit $?
 fi
+
+if [[ "$1" == "upload-targz-release-asset" ]]; then
+	echo 'Calling upload-targz-release-asset.sh'
+	./bin/upload-targz-release-asset.sh $2 $3 $4 $5 $6
+	exit $?
+fi
+
+echo 'Uh-oh, we didnt run any scripts. Perhaps you should take a look at the help screen'
+help
+exit 1

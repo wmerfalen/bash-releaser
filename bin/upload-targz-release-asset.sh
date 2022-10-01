@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $# -lt 5 ]]; then
-	echo 'Usage: create.sh USER REPO RELEASE_ID PATH_TO_ASSET NAME_OF_ASSET'
+	echo 'Usage: upload-targz-release-asset.sh USER REPO RELEASE_ID PATH_TO_ASSET NAME_OF_ASSET'
 	exit 1
 fi
 
@@ -21,7 +21,7 @@ curl \
 		-X POST \
 	  -H "Accept: application/vnd.github+json" \
 	  -H "Authorization: Bearer ${GITHUB_ACCESS_TOKEN}" \
-		-H "Content-Type: application/zip" \
+		-H "Content-Type: application/gzip" \
 		--data-urlencode "name=${GITHUB_NAME_OF_ASSET}" \
   	https://uploads.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/releases/${GITHUB_RELEASE_ID}/assets \
   	--data-binary "@${GITHUB_PATH_TO_ASSET}"
