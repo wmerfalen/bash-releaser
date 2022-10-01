@@ -1,7 +1,35 @@
 #!/bin/bash
 
+function help(){
+	echo 'Usage: ./runner <SCRIPT> <param-1>...[param-N]'
+	echo 
+	echo 'List of scripts:'
+	echo 'list <USER> <REPO>'       
+	echo '  - will list releases belonging to USER+REPO'
+	echo 
+	echo 'create <USER> <REPO> <TAG> <NAME_OF_RELEASE>'
+	echo '  - will create a release using TAG and NAME_OF_RELEASE as the name'
+	echo '    - tag must already exist for this to work!'
+	echo 
+	echo 'list-release-assets <USER> <REPO> <RELEASE_ID>'
+	echo '  - gets the list of assets for a specific release'
+	echo 
+	echo 'upload-release-asset <USER> <REPO> <RELEASE_ID> <PATH_TO_FILE>'
+	echo '  - Uploads the file at PATH_TO_FILE and adds that to the release specified by RELEASE_ID'
+	echo
+	echo
+}
+if [[ $# -lt 2 ]]; then
+	help
+	exit 1
+fi
+
+if [[ "$1" == "-h" || "$1" == "--help" || "$1" == "--usage" || "$1" == "help" ]]; then
+	help
+	exit 1
+fi
+
 TOKEN=$(cat ./token | sed -E 's|[\\s]+||gi')
-echo -ne "TOKEN: '${TOKEN}'\n"
 
 export GITHUB_ACCESS_TOKEN="${TOKEN}"
 
@@ -14,5 +42,17 @@ fi
 if [[ "$1" == "create" ]]; then
 	echo 'Calling create.sh'
 	./bin/create.sh $2 $3 $4 $5
+	exit $?
+fi
+
+if [[ "$1" == "list-release-assets" ]]; then
+	echo 'Calling list-release-assets.sh'
+	./bin/list-release-assets.sh $2 $3 $4
+	exit $?
+fi
+
+if [[ "$1" == "upload-release-asset" ]]; then
+	echo 'Calling upload-release-asset.sh'
+	./bin/upload-release-asset.sh $2 $3 $4 $5
 	exit $?
 fi
