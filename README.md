@@ -2,12 +2,36 @@
 Some bash scripts that call the Github API (specifically, the releases and assets API)
 
 # Install
-- make sure you install curl
-- this code requires bash, but some bash-like shells might work too
+- make sure you install `curl` and `jq`
+```
+# Debian/Ubuntu
+sudo apt -y install curl jq
+
+# Red Hat
+yum install curl jq
+
+# Arch
+pacman -Sy curl jq
+
+# This code may or may not work on WSL
+# TODO: powershell command to get curl and jq goes here 
+```
+
+- this code requires `bash`
 - make sure you echo out your Github Personal Access Token into the same directory as the `runner` script
+
+## Initializing your token file
 ```
 echo -ne 'ghp_mysupersecrettoken' > token
+
+# Then do a test call to one of your repos
+./runner list user repo
+
 ```
+
+# Help! I'm getting: `cat: ./token: No such file or directory`
+- If you see this when running `./runner ...`, it means you haven't placed your Github Personal Access Token into the file `token`. 
+	- follow steps in `Initializing your token file` above
 
 # Running
 All scripts are accessible by the `runner` script
