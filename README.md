@@ -63,11 +63,26 @@ To see the Usage/help screen, run:
 ./runner delete-release-asset wmerfalen bls 12345678
 ```
 
+# Debugging
+Sometimes you might want to pass in arguments to a script without actually calling the `curl` binary. This might be useful for a number of ways. If you'd like this functionality, set an environment variable named `GITHUB_DONT_SEND` to any value and all scripts will exit just prior to calling `curl`.
 
 # License
 MIT
 
-# Author
-William Merfalen | https://github.com/wmerfalen
+# Version
+`v1.0.0`
 
+# Upcoming features
 
+# How versioning works
+x - major release
+y - minor release
+z - build number
+```
+Example:
+
+v3.0.4 
+3 - major
+0 - minor
+4 - build number
+```
