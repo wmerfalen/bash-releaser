@@ -94,7 +94,7 @@ Sometimes you might want to pass in arguments to a script without actually calli
 MIT
 
 # Version
-v1.2.0
+v1.3.0
 
 # Upcoming features
 
