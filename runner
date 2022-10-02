@@ -32,6 +32,9 @@ function display-help(){
 	echo 'delete-release-asset <USER> <REPO> <ASSET_ID>'
 	echo '  - Deletes target asset specified by ASSET_ID'
 	echo
+	echo 'list-repo-artifacts <USER> <REPO>'
+	echo '  - List artifacts for a repo'
+	echo
 	echo '-- end of help page --'
 }
 if [[ $# -lt 2 ]]; then
@@ -88,6 +91,12 @@ fi
 if [[ "$1" == "delete-release-asset" ]]; then
 	echo 'Calling delete-release-asset.sh'
 	./bin/delete-release-asset.sh $2 $3 $4
+	exit $?
+fi
+
+if [[ "$1" == "list-repo-artifacts" ]]; then
+	echo 'Calling list-repo-artifacts.sh'
+	./bin/list-repo-artifacts.sh $2 $3
 	exit $?
 fi
 
